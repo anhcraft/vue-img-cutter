@@ -29,7 +29,7 @@
                         >
                             <div class="toolMain">
                                 <div class="tool-title" v-if="isModal === true">
-                                    图片裁剪
+                                    Cắt ảnh
                                     <span class="closeIcon" @click="handleClose">×</span>
                                 </div>
                                 <div
@@ -60,11 +60,11 @@
                                         @mouseenter="dropImgOff"
                                     >
                                         <div class="dockBtn" v-if="rate">
-                                            <slot name="ratio"> Ratio: </slot>
+                                            <slot name="ratio"> Tỉ lệ ảnh: </slot>
                                             {{ rate }}
                                         </div>
                                         <div class="dockBtn" @click="scaleReset">
-                                            <slot name="scaleReset"> Scale: </slot>
+                                            <slot name="scaleReset"> Tỉ lệ phóng: </slot>
                                             {{ drawImg.swidth > 0 ? (drawImg.width / drawImg.swidth).toFixed(2) : '-' }}
                                         </div>
                                         <div v-if="originalGraph === false" @click="turnImg(-90)" class="dockBtn">
@@ -120,7 +120,7 @@
                                                 <div class="controlBoxInnerLine controlBoxInnerLineRight"></div>
                                                 <!--工具栏提示-->
                                                 <div class="selectArea">
-                                                    宽:{{ showToolBoxWidth }} 高:{{ showToolBoxHeight }} (x:{{
+                                                    Dài:{{ showToolBoxWidth }} Rộng:{{ showToolBoxHeight }} (x:{{
                                                         showToolBoxX
                                                     }},y:{{ showToolBoxY }})
                                                 </div>
@@ -222,7 +222,7 @@
                                 <div class="btn-group fr">
                                     <span @click="handleClose">
                                         <slot name="cancel">
-                                            <button type="button" class="btn btn-default">取消</button>
+                                            <button type="button" class="btn btn-default">Hủy</button>
                                         </slot>
                                     </span>
                                     <span @click="cropPicture(false)">
@@ -233,7 +233,7 @@
                                                 style="margin-left: 15px"
                                                 :disabled="!drawImg.img"
                                             >
-                                                确定
+                                                Đồng ý
                                             </button>
                                         </slot>
                                     </span>
@@ -268,7 +268,7 @@
             label: {
                 // 按钮文字
                 type: String,
-                default: '选择图片',
+                default: 'Chọn ảnh',
                 required: false,
             },
             isModal: {
@@ -1646,10 +1646,10 @@
                         _this.quality;
                 } else {
                     if (!doNotReset) {
-                        console.warn('No picture selected');
+                        console.warn('Chưa chọn ảnh');
                         _this.$emit('error', {
                             err: 1,
-                            msg: 'No picture selected',
+                            msg: 'Chưa chọn ảnh',
                         });
                     }
                 }
